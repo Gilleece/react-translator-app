@@ -1,12 +1,19 @@
 import "./styles.css";
-import React from "react";
+import React, { useState } from "react";
+import Field from "./field"
+import Languages from "./languages"
+import Translate from "./translate"
 
-function App() {
+export default function App() {
+  const [language, setLanguage] = useState("ru");
+  const [text, setText] = useState("");
+
   return (
     <div>
-      <h1 className="title">How are you?</h1>
+      <Field label="Enter English" onChange={setText} value={text} />
+      <Languages language={language} onLanguageChange={setLanguage} />
+      <hr />
+      <Translate text={text} language={language} />
     </div>
   );
 }
-
-export default App;
